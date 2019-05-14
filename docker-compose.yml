@@ -1,0 +1,34 @@
+version: '3'
+services:
+  jenkinsweb:
+    image: 'jenkins/jenkins:latest'
+    volumes: 
+      - 'jenkins_home:/var/jenkins_home'
+    ports:
+      - 8080:8080
+
+  ansible:
+    build:
+      dockerfile: Dockerfile.ansbl
+      context: './ansible'
+
+  docker-api:
+    image: 'bobrik/socat'
+    command: 
+      - "TCP-LISTEN:2375,fork"
+      - "UNIX-CONNECT:/var/run/docker.sock"
+    ports:
+      - "2375:2375"
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+  
+  messenger:
+    image: 'alpine:latest'
+    command: >
+      /bin/sh -c "while true; do echo ; echo Attention:; echo DO NOT FORGET to run the following on your host machine; \
+        echo \"---> export DOCKER_HOST=tcp://127.0.0.1:2375\"; \
+          echo Jenkins is configured to use Docker API on 192.168.1.134; \
+            echo ;sleep 5; done"
+volumes:
+  jenkins_home:
+    external: true

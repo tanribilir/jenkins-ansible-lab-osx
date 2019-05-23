@@ -11,7 +11,7 @@ Jenkins also configured to find Docker http/api at 192.168.1.134 IP address. To 
 ### socat
 For security reasons, docker-http port is not published on MacOS. However, using the `socat image` provided with the docker-compose.yml file, it is possible to create a listening port on localhost:2375 (you may change this mapping inside `docker-compose.yml` file).
 
-You will be alerted to run **export _DOCKER_HOST=tcp://127.0.0.1:2375_** on your MacOS. access docker This is important, otherwise you personally and Jenkins as well cannot access docker api.
+You will be alerted to run **export _DOCKER_HOST=tcp://127.0.0.1:2375_** on your MacOS. This is important, otherwise you personally and Jenkins as well cannot access docker api.
 
 ### Ansible
 Ansible and Jenkins are pre-configured with ssh-keys to allow them to communicate.

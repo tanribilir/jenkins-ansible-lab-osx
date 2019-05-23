@@ -1,5 +1,5 @@
 ## Creating a Jenkins/Ansible Lab on MacOS
-If you want to test Jenkins CI/CD together with Ansible and Docker on MacOS, please clone this project run it with docker-compose
+If you want to test Jenkins CI/CD together with Ansible and Docker on MacOS, please clone this project and run it with docker-compose tool.
 
 ### Jenkins
 There is a directory mapping for Jenkins configuration files (`jenkins_home`).
